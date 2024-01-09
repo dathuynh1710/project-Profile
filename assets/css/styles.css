@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+:root {
+    --box-shadow-light-mode: 0 0 10px 1px #999;
+}
+
 html {
     font-size: 62.5%;
 }
@@ -17,4 +21,27 @@ select,
 button {
     font-size: inherit;
     font-family: inherit;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
+    margin: 30px auto;
+    max-width: 450px;
+    width: 100%;
+    box-shadow: var(--box-shadow-light-mode);
+    border-radius: 10px;
+}
+
+.avatar-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
 }
