@@ -3,7 +3,16 @@
 }
 
 :root {
+    --text-light-color: #684344;
     --box-shadow-light-mode: 0 0 10px 1px #999;
+    --main-bg-dark-color: #18191a;
+    --box-shadow-dark-mode: 0 0 10px 1px #000000;
+    --btn-bg-dark-mode: #4e4f50;
+}
+
+/* Common */
+a {
+    text-decoration: none;
 }
 
 html {
@@ -23,12 +32,18 @@ button {
     font-family: inherit;
 }
 
-.container {
-    width: 100%;
-    min-height: 100vh;
+.container,
+.content,
+.contact .ico {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Content */
+.container {
+    width: 100%;
+    min-height: 100vh;
 }
 
 .main {
@@ -39,9 +54,166 @@ button {
     border-radius: 10px;
 }
 
+/* Tools-header */
+.btn-controls {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+}
+
+.btn.switch-mode {
+    position: relative;
+    margin-top: 10px;
+    width: 30px;
+    height: 30px;
+    color: var(--text-light-color);
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: transparent;
+    box-shadow: var(--box-shadow-light-mode);
+}
+
 .avatar-img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.content {
+    margin: 15px 5px;
+}
+
+/* Information */
+.name {
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+    .highlight {
+        color: transparent;
+        background-image: linear-gradient(
+            225deg,
+            #ff3cac 0%,
+            #784ba0 50%,
+            #2b86c5 100%
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+}
+
+.quote {
+    margin-top: 10px;
+    text-align: center;
+    color: var(--text-light-color);
+}
+
+.author {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.contact {
+    display: flex;
+    justify-content: center;
+    /* flex-wrap: wrap;
+    margin-top: 10px; */
+}
+
+.contact .ico {
+    flex-direction: column;
+    margin: 10px;
+    font-size: 20px;
+    width: 75px;
+}
+
+.title-icon {
+    color: var(--text-light-color);
+}
+
+.contact .ico:hover .title-icon {
+    color: #000000;
+}
+
+.contact .ico .color-mode {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    box-shadow: var(--box-shadow-light-mode);
+    color: var(--text-light-color);
+    margin-bottom: 3px;
+    transition: box-shadow 0.2s linear;
+}
+
+.contact .ico:hover .color-mode {
+    box-shadow: 0 0 10px 2px #000000;
+}
+
+/**Dark Mode */
+
+.dark-mode {
+    background-color: var(--main-bg-dark-color);
+    animation: lightTo 0.5s ease;
+}
+
+@keyframes lightTo {
+    from {
+        background-color: #999999;
+    }
+    to {
+        background-color: var(--main-bg-dark-color);
+    }
+}
+
+.dark-mode .main {
+    background-color: #242526;
+    animation: lightTo 0.15s ease-in;
+}
+
+.dark-mode .main .btn.switch-mode {
+    background-color: var(--btn-bg-dark-mode);
+}
+
+.dark-mode .contact .ico .color-mode {
+    color: #000;
+}
+
+.dark-mode .contact .ico:hover .color-mode {
+    box-shadow: var(--box-shadow-light-mode);
+}
+
+.dark-mode .quote,
+.dark-mode .title-icon {
+    color: #999;
+}
+
+.dark-mode .name,
+.dark-mode .dark-mode .main .btn.switch-mode,
+.dark-mode .contact .ico:hover {
+    color: #fff;
+}
+
+.dark-mode .avatar-img,
+.dark-mode .main,
+.dark-mode .main .btn.switch-mode,
+.dark-mode .contact .ico .color-mode {
+    box-shadow: var(--box-shadow-dark-mode);
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+    .dark-mode .highlight {
+        color: transparent;
+        background-image: linear-gradient(45deg, #fbda61 0%, #ff5acd 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
 }
